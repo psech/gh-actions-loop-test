@@ -7,12 +7,12 @@ on:
         required: false
 
 jobs:
-  job-one:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        tags: ${{inputs.tags}}
+        tags: ["test 1", "test 2", "test 3"]
 
     steps:
       - name: dispatch tags array
