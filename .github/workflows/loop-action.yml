@@ -27,6 +27,6 @@ jobs:
 
   pass-matrix:
     needs: [ tags-matrix ]
-    uses: ./reusable-workflow.yml
+    uses: ./.github/workflows/reusable-workflow.yml
     with:
       tags: ${{needs.tags-matrix.outputs.tags}}
