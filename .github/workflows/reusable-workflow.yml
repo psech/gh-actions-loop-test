@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        tags: ${{ echo inputs.tags | jq }}
+        tags: ${{inputs.tags}}
 
     steps:
       - name: dispatch tags array
