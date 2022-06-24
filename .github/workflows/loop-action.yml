@@ -10,9 +10,15 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - id: set-matrix
+      - name: Set tags matrix
+        id: set-matrix
         run: echo "::set-output name=matrix::{[\"3.1-sdk\",\"5.0-sdk\",\"6.0-sdk\"]}"
 
+  pass-matrix:
+    needs: [ tags-matrix ]
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      tags: ${{needs.tags-matrix.outputs.matrix}}
 
   # test-one:
   #   runs-on: ubuntu-latest
@@ -27,9 +33,4 @@ jobs:
   #   steps:
   #     - name: Run a one-line script
   #       run: echo Running for ${{matrix.arr}}
-
-  pass-matrix:
-    needs: [ tags-matrix ]
-    uses: ./.github/workflows/reusable-workflow.yml
-    with:
-      tags: ${{needs.tags-matrix.outputs.matrix}}
+  

@@ -9,9 +9,14 @@ on:
 jobs:
   job-one:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        tags: ${{ inputs.tags | jq }}
+
     steps:
       - name: dispatch tags array
         id: dispatch-tags-array
         if: "${{ inputs.tags != ''}}"
         run: |
-          echo Input.tags = ${{ inputs.tags }}
+          echo Running tag ${{inputs.tags}}
