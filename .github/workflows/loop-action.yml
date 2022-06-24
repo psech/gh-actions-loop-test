@@ -2,23 +2,31 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
-  test:
+  tags-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      tags: ${{fromJSON(["3.1-sdk", "5.0-sdk", "6.0-sdk"]))}}
 
-    strategy:
-      fail-fast: true
-      matrix:
-        arr:
-          - arr 1
-          - arr 2
-          - arr 3
 
-    steps:
-      - name: Run a one-line script
-        run: echo Running for ${{matrix.arr}}
+  # test-one:
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     matrix:
+  #       arr:
+  #         - 3.1-sdk
+  #         - 5.0-sdk
+  #         - 6.0-sdk
+
+  #   steps:
+  #     - name: Run a one-line script
+  #       run: echo Running for ${{matrix.arr}}
+
+  pass-matrix:
+    needs: [ tags-matrix ]
+    uses: ./reusable-workflow.yml
+    with:
+      tags: ${{needs.tags-matrix.outputs.tags}}

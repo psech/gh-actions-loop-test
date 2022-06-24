@@ -1,0 +1,17 @@
+name: reusable-workflow
+on:
+  workflow_call:
+    inputs:
+      tags:
+        type: string
+        required: false
+
+jobs:
+  job-one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dispatch tags array
+        id: dispatch-tags-array
+        if: "${{ inputs.tags != ''}}"
+        run: |
+          echo Input.tags = ${{ inputs.tags }}
