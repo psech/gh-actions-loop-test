@@ -19,4 +19,5 @@ jobs:
         id: dispatch-tags-array
         if: "${{ inputs.tags != ''}}"
         run: |
-          echo Running tag ${{inputs.tags}}
+          echo Input ${{inputs.tags}}
+          echo strategy round ${{matrix.tags}}
