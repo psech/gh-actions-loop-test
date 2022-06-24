@@ -8,10 +8,10 @@ jobs:
   tags-matrix:
     runs-on: ubuntu-latest
     outputs:
-      tags: ${{fromJSON(["3.1-sdk", "5.0-sdk", "6.0-sdk"]))}}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - name: test
-        run: "echo Finished tags-matrix"
+      - id: set-matrix
+        run: echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
 
 
   # test-one:
@@ -32,4 +32,4 @@ jobs:
     needs: [ tags-matrix ]
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      tags: ${{needs.tags-matrix.outputs.tags}}
+      tags: ${{needs.tags-matrix.outputs.matrix}}
