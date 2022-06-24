@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tags: ${{fromJSON(["3.1-sdk", "5.0-sdk", "6.0-sdk"]))}}
+    steps:
+      - name: test
+        run: "echo Finished tags-matrix"
 
 
   # test-one:
