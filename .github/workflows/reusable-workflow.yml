@@ -31,9 +31,9 @@ jobs:
           echo "::set-output name=matrix2::${JSON//'%'/'%25'}"
           echo
           echo Setting matrix output directly
-          STRATEGY="[\"3.1-sdk\",\"5.0-sdk\",\"6.0-sdk\"]"
+          STRATEGY="[\"3.1-sdk\", \"5.0-sdk\", \"6.0-sdk\"]"
           echo "Strategy ${STRATEGY}"
-          echo '::set-output name=matrix3::$STRATEGY'
+          echo "::set-output name=matrix3::$STRATEGY"
 
   build:
     runs-on: ubuntu-latest
