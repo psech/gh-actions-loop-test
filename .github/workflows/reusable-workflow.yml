@@ -15,7 +15,8 @@ jobs:
       - id: set-matrix
         run: |
           echo Setting matrix output
-          echo "::set-output name=matrix::${{inputs.tags}}"
+          JSON=$(cat ./settings.json)
+          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 
   build:
     runs-on: ubuntu-latest
