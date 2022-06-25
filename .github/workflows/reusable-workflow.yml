@@ -24,6 +24,7 @@ jobs:
 
           echo Setting matrix output from file
           JSON=$(cat ./settings.json)
+          echo "file content ${JSON}"
           echo "JSON content ${JSON//'%'/'%25'}"
           echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 

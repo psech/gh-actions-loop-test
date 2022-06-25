@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Set tags matrix
         id: set-matrix
-        run: echo "::set-output name=matrix::[\"3.1-sdk\", \"5.0-sdk\", \"6.0-sdk\"]"
+        run: echo '::set-output name=matrix::["3.1-sdk", "5.0-sdk", "6.0-sdk"]'
 
   pass-matrix:
     needs: [ tags-matrix ]
