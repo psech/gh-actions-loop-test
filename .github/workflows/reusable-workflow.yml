@@ -14,6 +14,8 @@ jobs:
     steps:
       - id: set-matrix
         run: |
+          JSON=$(echo ${{inputs.tags}} | jq)
+          echo $JSON
           echo "::set-output name=matrix::${{${{inputs.tags}}//'%'/'%25'}}"
 
   build:
