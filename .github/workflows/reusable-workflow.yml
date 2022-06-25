@@ -15,6 +15,7 @@ jobs:
       - id: set-matrix
         run: |
           echo Setting matrix
+          echo Input ${{inputs.tags}}
 
   build:
     runs-on: ubuntu-latest
