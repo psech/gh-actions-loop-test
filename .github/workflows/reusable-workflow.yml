@@ -23,7 +23,8 @@ jobs:
 
     strategy:
       matrix:
-        tags: ${{fromJSON(needs.set-strategy.outputs.matrix)}}
+        # tags: ${{fromJSON(needs.set-strategy.outputs.matrix)}}
+        tags: [1,2,3]
 
     steps:
       - name: dispatch tags array
