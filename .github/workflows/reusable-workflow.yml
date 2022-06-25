@@ -15,7 +15,7 @@ jobs:
       - id: set-matrix
         run: |
           echo Setting matrix
-          echo ${{fromJSON({[\"3.1-sdk\",\"5.0-sdk\",\"6.0-sdk\"]})}}
+          echo "${{ fromJSON({[\"3.1-sdk\",\"5.0-sdk\",\"6.0-sdk\"]}) }}"
 
   build:
     runs-on: ubuntu-latest
