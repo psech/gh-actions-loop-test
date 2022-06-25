@@ -12,14 +12,12 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
-        with: 
-          path: './'    
       - id: set-matrix
         run: |
           echo Setting matrix output
-          JSON=$(cat ./settings.json)
-          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
+          echo "Input tags ${{ inputs.tags }}"
+          echo "Input tags fromJSON ${{ fromJSON(inputs.tags) }}"
+          echo "::set-output name=matrix::${{inputs.tags}}"
 
   build:
     runs-on: ubuntu-latest
