@@ -41,7 +41,7 @@ jobs:
 
     strategy:
       matrix:
-        tags: ${{fromJSON(needs.set-strategy.outputs.matrix3)}}
+        tags: ${{fromJSON(needs.set-strategy.outputs.matrix1)}}
         # tags: ${{ fromJSON([1,2,3])}}
 
     steps:
