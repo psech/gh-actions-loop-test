@@ -12,12 +12,20 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v2
+        with: 
+          path: './'    
       - id: set-matrix
         run: |
-          echo Setting matrix output
+          echo Setting matrix output from parent workflow
           echo "Input tags ${{ inputs.tags }}"
           echo "Input tags fromJSON ${{ fromJSON(inputs.tags) }}"
           echo "::set-output name=matrix::${{inputs.tags}}"
+
+          echo Setting matrix output from file
+          JSON=$(cat ./settings.json)
+          echo "JSON content ${JSON//'%'/'%25'}"
+          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 
   build:
     runs-on: ubuntu-latest
