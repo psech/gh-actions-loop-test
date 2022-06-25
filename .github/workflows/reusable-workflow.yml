@@ -14,8 +14,8 @@ jobs:
     steps:
       - id: set-matrix
         run: |
-          echo Setting matrix
-          echo Input ${{inputs.tags}}
+          echo Setting matrix output
+          echo "::set-output name=matrix::${{inputs.tags}}"
 
   build:
     runs-on: ubuntu-latest
