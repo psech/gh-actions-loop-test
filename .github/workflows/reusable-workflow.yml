@@ -6,6 +6,9 @@ on:
         type: string
         required: false
 
+env:
+  test: "{[\"3.1-sdk\", \"5.0-sdk\", \"6.0-sdk\"]}"
+
 jobs:
   set-strategy:
     runs-on: ubuntu-latest
@@ -24,7 +27,7 @@ jobs:
     strategy:
       matrix:
         # tags: ${{fromJSON(needs.set-strategy.outputs.matrix)}}
-        tags: ${{fromJSON("[1,2,3]")}}
+        tags: ${{fromJSON(env.test)}}
 
     steps:
       - name: dispatch tags array
