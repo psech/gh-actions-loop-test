@@ -20,13 +20,13 @@ jobs:
           echo Setting matrix output from parent workflow
           echo "Input tags ${{ inputs.tags }}"
           echo "Input tags fromJSON ${{ fromJSON(inputs.tags) }}"
-          echo "::set-output name=matrix::${{inputs.tags}}"
-
+          echo "::set-output name=matrix1::${{inputs.tags}}"
+          echo
           echo Setting matrix output from file
           JSON=$(cat ./settings.json)
           echo "file content ${JSON}"
           echo "JSON content ${JSON//'%'/'%25'}"
-          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
+          echo "::set-output name=matrix2::${JSON//'%'/'%25'}"
 
   build:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
 
     strategy:
       matrix:
-        tags: ${{fromJSON(needs.set-strategy.outputs.matrix)}}
+        tags: ${{fromJSON(needs.set-strategy.outputs.matrix2)}}
         # tags: ${{ fromJSON([1,2,3])}}
 
     steps:
