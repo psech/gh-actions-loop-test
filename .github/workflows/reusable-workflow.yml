@@ -28,6 +28,6 @@ jobs:
     steps:
       - name: dispatch tags array
         id: dispatch-tags-array
-        if: "${{ inputs.tags != ''}}"
+        # if: "${{ inputs.tags != ''}}"
         run: |
           echo strategy round ${{matrix.tags}}
