@@ -12,6 +12,9 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v2
+        with: 
+          path: './'    
       - id: set-matrix
         run: |
           echo Setting matrix output
