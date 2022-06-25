@@ -16,7 +16,6 @@ jobs:
         run: |
           JSON=$(echo ${{inputs.tags}} | jq)
           echo $JSON
-          echo "::set-output name=matrix::${{${{inputs.tags}}//'%'/'%25'}}"
 
   build:
     runs-on: ubuntu-latest
