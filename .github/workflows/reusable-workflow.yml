@@ -15,8 +15,6 @@ jobs:
       - id: set-matrix
         run: |
           echo Setting matrix output
-          echo $(pwd)
-          echo $(ls -al)
           JSON=$(cat ./settings.json)
           echo "::set-output name=matrix::${JSON//'%'/'%25'}"
 
