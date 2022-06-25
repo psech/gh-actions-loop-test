@@ -12,6 +12,7 @@ jobs:
     outputs:
       matrix1: ${{ steps.set-matrix.outputs.matrix1 }}
       matrix2: ${{ steps.set-matrix.outputs.matrix2 }}
+      matrix3: ${{ steps.set-matrix.outputs.matrix3 }}
     steps:
       - uses: actions/checkout@v2
         with: 
@@ -28,6 +29,11 @@ jobs:
           echo "file content ${JSON}"
           echo "JSON content ${JSON//'%'/'%25'}"
           echo "::set-output name=matrix2::${JSON//'%'/'%25'}"
+          echo
+          echo Setting matrix output directly
+          STRATEGY='["3.1-sdk", "5.0-sdk", "6.0-sdk"]'
+          echo "Strategy ${STRATEGY}"
+          echo '::set-output name=matrix3::$STRATEGY'
 
   build:
     runs-on: ubuntu-latest
@@ -35,7 +41,7 @@ jobs:
 
     strategy:
       matrix:
-        tags: ${{fromJSON(needs.set-strategy.outputs.matrix2)}}
+        tags: ${{fromJSON(needs.set-strategy.outputs.matrix3)}}
         # tags: ${{ fromJSON([1,2,3])}}
 
     steps:
