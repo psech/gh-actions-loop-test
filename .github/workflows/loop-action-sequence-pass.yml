@@ -1,0 +1,21 @@
+name: loop-action-sequence-pass
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tags-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Set tags matrix
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::['3.1-sdk', '5.0-sdk', '6.0-sdk']"
+
+  build:
+    needs: [ tags-matrix ]
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      tags: ${{needs.tags-matrix.outputs.matrix}}
