@@ -20,17 +20,3 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       tags: ${{needs.tags-matrix.outputs.matrix}}
-
-  # test-one:
-  #   runs-on: ubuntu-latest
-
-  #   strategy:
-  #     matrix:
-  #       arr:
-  #         - 3.1-sdk
-  #         - 5.0-sdk
-  #         - 6.0-sdk
-
-  #   steps:
-  #     - name: Run a one-line script
-  #       run: echo Running for ${{matrix.arr}}
