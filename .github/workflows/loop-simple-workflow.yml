@@ -1,4 +1,4 @@
-name: simple-workflow
+name: loop-simple-workflow
 
 on:
   workflow_dispatch:
