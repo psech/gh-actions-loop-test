@@ -13,7 +13,7 @@ jobs:
       - name: Set tags matrix
         id: set-matrix
         run: |
-          STRATEGY="[\"3.1-sdk\", \"5.0-sdk\", \"6.0-sdk\"]"
+          STRATEGY='["3.1-sdk", "5.0-sdk", "6.0-sdk"]'
           echo "::set-output name=matrix::$STRATEGY"
 
   pass-matrix:
