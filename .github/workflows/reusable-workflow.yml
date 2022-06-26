@@ -41,8 +41,8 @@ jobs:
 
     strategy:
       matrix:
-        # tags: ${{fromJSON(needs.set-strategy.outputs.matrix1)}}
-        tags: ${{ fromJSON('["3.1-sdk", "5.0-sdk", "6.0-sdk"]') }}
+        tags: ${{fromJSON(needs.set-strategy.outputs.matrix1)}}
+        # tags: ${{ fromJSON('["3.1-sdk", "5.0-sdk", "6.0-sdk"]') }}
 
     steps:
       - name: dispatch tags array
