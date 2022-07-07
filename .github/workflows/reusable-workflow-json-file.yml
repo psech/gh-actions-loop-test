@@ -54,7 +54,7 @@ jobs:
       - name: log if false
         id: log
         run: |
-          echo inputs.tags are set
+          echo inputs.tags are empty
   
   condition-step:
     runs-on: ubuntu-latest
