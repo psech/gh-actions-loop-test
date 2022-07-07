@@ -35,3 +35,31 @@ jobs:
         # if: "${{ inputs.tags != ''}}"
         run: |
           echo strategy round ${{matrix.tags}}
+  
+  condition-job-true:
+    runs-on: ubuntu-latest
+    if: "${{ inputs.tags != ''}}"
+
+    steps:
+      - name: log if true
+        id: log
+        run: |
+          echo inputs.tags are set
+
+  condition-job-false:
+    runs-on: ubuntu-latest
+    if: "${{ inputs.tags == ''}}"
+
+    steps:
+      - name: log if false
+        id: log
+        run: |
+          echo inputs.tags are set
+  
+  condition-step:
+    runs-on: ubuntu-latest
+    steps:
+      - if: "${{ inputs.tags != ''}}"
+        run: echo 'This will run only if the inputs.tags is set'
+      - if: "${{ inputs.tags == ''}}"
+        run: echo 'This will run only if the inputs.tags is empty'
